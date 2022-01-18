@@ -42,17 +42,12 @@ print(results_ARIMA.summary())
 # add some anomalies here
 Y[776] = -50;
 Y[786] = -70;
-Y[810] = Y[810]-5;
-Y[811] = Y[811]+5;
-Y[812] = Y[812]+5;
-# Y[813] = 50;
-# Y[814] = 50;
+Y[810] = 50;
 Y[856] = 0;
 Y[874] = 50;
-Y[896] = 0;
-# Y[908] = -20;
-Y[940] = Y[940]+1;
-Y[965] = 20;
+# Y[896] = 0;
+Y[908] = -20;
+Y[965] = 100;
 Y[985] = -50;
 Y[998] = 0;
 # normal points labeled as 1, anomalies labeled as 0

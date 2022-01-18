@@ -68,7 +68,7 @@ d = df[df.target == 1].drop(labels='target', axis=1).mean(axis=0).to_numpy()
 data = Y
 
 da = pd.DataFrame(data,columns=['Artifical Data'])
-da.to_csv("C:/2021fall/IL2232/ARIMA design/testdata/real.csv",index=False,header=False)
+# da.to_csv("C:/2021fall/IL2232/ARIMA design/testdata/real.csv",index=False,header=False)
 
 arma_mod = sm.tsa.statespace.SARIMAX(data, order=(2, 1, 2), trend="n")
 results_ARIMA = arma_mod.fit(disp=0)
@@ -81,8 +81,11 @@ binary = x.bin()
 output = pd.DataFrame(binary,columns=['data'])
 def addstart(r):
     return r+','
+import os
 output['data'] = output.apply(lambda row: addstart(row['data']),axis=1)
-output.to_csv("C:/2021fall/IL2232/ARIMA design/testdata/1.csv",index=False,header=False,quotechar=' ')
+dirname = os.path.dirname(__file__)
+output.to_csv(os.path.join(dirname,"data/fixed_point_testdata.csv"),index=False,header=False,quotechar=' ')
+
 
 x = Fxp(arparams, signed=True, n_word=32, n_frac=15)
 binary_ar = x.bin(frac_dot=True)
